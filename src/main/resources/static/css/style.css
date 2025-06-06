@@ -21,6 +21,15 @@ h2 {
     border-radius: .75rem;
 }
 
+/* Rounded buttons and form controls */
+.btn {
+    border-radius: .5rem;
+}
+
+.form-control {
+    border-radius: .5rem;
+}
+
 footer {
     background-color: #1e3c72;
     color: #fff;

@@ -9,6 +9,7 @@
 <div class="container mt-4">
     <div class="card p-4 shadow-sm">
     <h2 class="mb-4">Thông tin khách hàng, máy, dịch vụ đã sử dụng</h2>
+    <div class="table-responsive">
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -45,6 +46,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
     <nav th:if="${totalPages > 1}">
         <ul class="pagination">
             <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
