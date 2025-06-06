@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Đăng ký sử dụng dịch vụ</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div th:replace="fragments/nav :: nav"></div>
 <div class="container mt-4">
+    <div class="card p-4 shadow-sm">
     <h2 class="mb-4">Đăng ký sử dụng dịch vụ</h2>
     <form th:action="@{/sudungdichvu/save}" th:object="${suDungDichVu}" method="post">
         <div class="mb-3">
@@ -38,6 +39,8 @@
         <button type="submit" class="btn btn-success">Lưu</button>
         <a th:href="@{/sudungdichvu/create}" class="btn btn-secondary">Hủy</a>
     </form>
+    </div>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
