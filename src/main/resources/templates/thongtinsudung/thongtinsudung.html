@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin sử dụng tổng hợp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Thông tin khách hàng, máy, dịch vụ đã sử dụng</h2>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Mã KH</th>
+            <th>Tên KH</th>
+            <th>Mã máy</th>
+            <th>Vị trí</th>
+            <th>Trạng thái</th>
+            <th>Ngày bắt đầu máy</th>
+            <th>Giờ bắt đầu máy</th>
+            <th>Thời gian dùng máy</th>
+            <th>Mã DV</th>
+            <th>Ngày dùng DV</th>
+            <th>Giờ dùng DV</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row : ${thongTinPage.content}">
+            <td th:text="${row.maKH}"></td>
+            <td th:text="${row.tenKH}"></td>
+            <td th:text="${row.maMay}"></td>
+            <td th:text="${row.viTri}"></td>
+            <td th:text="${row.trangThai}"></td>
+            <td th:text="${row.ngayBatDauSuDungMay}"></td>
+            <td th:text="${row.gioBatDauSuDungMay}"></td>
+            <td th:text="${row.thoiGianSuDungMay}"></td>
+            <td th:text="${row.maDV}"></td>
+            <td th:text="${row.ngaySuDungDV}"></td>
+            <td th:text="${row.gioSuDungDV}"></td>
+            <td th:text="${row.soLuong}"></td>
+            <td th:text="${row.tongTien}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <nav th:if="${totalPages > 1}">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                <a class="page-link" th:href="@{/thongtin(page=${currentPage-1},size=${pageSize})}">&laquo;</a>
+            </li>
+            <li class="page-item"
+                th:each="i : ${#numbers.sequence(1, totalPages)}"
+                th:classappend="${i == currentPage} ? 'active'">
+                <a class="page-link" th:href="@{/thongtin(page=${i},size=${pageSize})}" th:text="${i}">1</a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                <a class="page-link" th:href="@{/thongtin(page=${currentPage+1},size=${pageSize})}">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

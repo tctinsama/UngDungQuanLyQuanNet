@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký sử dụng dịch vụ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="mb-4">Đăng ký sử dụng dịch vụ</h2>
+    <form th:action="@{/sudungdichvu/save}" th:object="${suDungDichVu}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Khách hàng</label>
+            <select th:field="*{id.maKH}" class="form-select" required>
+                <option value="" disabled selected>-- Chọn khách hàng --</option>
+                <option th:each="kh : ${khachHangs}" th:value="${kh.maKH}" th:text="${kh.tenKH}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dịch vụ</label>
+            <select th:field="*{id.maDV}" class="form-select" required>
+                <option value="" disabled selected>-- Chọn dịch vụ --</option>
+                <option th:each="dv : ${dichVus}" th:value="${dv.maDV}" th:text="${dv.tenDV}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ngày sử dụng</label>
+            <input type="date" th:field="*{id.ngaySuDung}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Giờ sử dụng</label>
+            <input type="time" th:field="*{id.gioSuDung}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Số lượng</label>
+            <input type="number" th:field="*{soLuong}" class="form-control" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-success">Lưu</button>
+        <a th:href="@{/sudungdichvu/create}" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
+</body>
+</html>
