@@ -1,8 +1,27 @@
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #444;
+    background-color: #f4f6f9;
 }
 
 h2 {
-    color: #007bff;
+    color: #1f2d3d;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+}
+
+.table thead {
+    background-color: #1e3c72;
+    color: #fff;
+}
+
+.card {
+    border-radius: .75rem;
+}
+
+footer {
+    background-color: #1e3c72;
+    color: #fff;
 }
