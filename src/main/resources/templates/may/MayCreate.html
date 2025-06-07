@@ -20,8 +20,13 @@
         </div>
         <div class="mb-4">
             <label class="form-label">Trạng Thái</label>
-            <input type="text" th:field="*{trangThai}" class="form-control" required>
+            <select th:field="*{trangThai}" class="form-select" required>
+                <option value="" disabled selected>-- Chọn trạng thái --</option>
+                <option value="Đang sử dụng">Đang sử dụng</option>
+                <option value="Trống">Trống</option>
+            </select>
         </div>
+
         <button type="submit" class="btn btn-success">Lưu</button>
         <a th:href="@{/may}" class="btn btn-secondary">Hủy</a>
     </form>

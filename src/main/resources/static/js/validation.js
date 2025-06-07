@@ -27,7 +27,7 @@ $(document).ready(function(){
       }
     });
     var maKH = form.find('input[name$="maKH"]');
-    if(maKH.length && !/^KH\d{5}$/.test(maKH.val())){
+    if(maKH.length && !/^KH\d{3}$/.test(maKH.val())){
       alert('Mã KH không hợp lệ');
       valid = false;
     }
