@@ -52,7 +52,7 @@ public class MayServiceImpl implements MayService {
     }
 
     @Override
-    public Page<May> searchByMaMay(String keyword, Pageable pageable) {
-        return repo.findByMaMayContaining(keyword, pageable);
+    public Page<May> search(String keyword, Pageable pageable) {
+        return repo.findByMaMayContainingOrViTriContaining(keyword, keyword, pageable);
     }
 }
