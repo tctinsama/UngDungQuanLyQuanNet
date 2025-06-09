@@ -49,5 +49,10 @@ public class KhachHangServiceImpl implements KhachHangService {
     public Page<KhachHang> findAll(Pageable pageable) {
         return repo.findAll(pageable);
     }
+
+    @Override
+    public Page<KhachHang> search(String keyword, Pageable pageable) {
+        return repo.findByMaKHContainingOrTenKHContaining(keyword, keyword, pageable);
+    }
 }
 

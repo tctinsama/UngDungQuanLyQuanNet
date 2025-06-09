@@ -16,4 +16,6 @@ public interface KhachHangService {
 
     Page<KhachHang> findAll(Pageable pageable);
 
+    Page<KhachHang> search(String keyword, Pageable pageable);
+
 }
