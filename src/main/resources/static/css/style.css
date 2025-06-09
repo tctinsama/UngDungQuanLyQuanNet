@@ -34,3 +34,22 @@ footer {
     background-color: #1e3c72;
     color: #fff;
 }
+
+/* Search form styling */
+.search-form {
+    display: flex;
+    gap: .5rem;
+}
+
+.search-form .form-control {
+    flex: 1;
+}
+
+@media (max-width: 576px) {
+    .search-form {
+        flex-direction: column;
+    }
+    .search-form .form-control {
+        margin-right: 0;
+    }
+}
