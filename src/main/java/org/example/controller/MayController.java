@@ -67,7 +67,7 @@ public class MayController {
 
         Page<May> mayPage;
         if (keyword != null && !keyword.isEmpty()) {
-            mayPage = mayService.searchByMaMay(keyword, PageRequest.of(page - 1, size));
+            mayPage = mayService.search(keyword, PageRequest.of(page - 1, size));
             model.addAttribute("keyword", keyword);
         } else {
             mayPage = mayService.findAll(PageRequest.of(page - 1, size));
