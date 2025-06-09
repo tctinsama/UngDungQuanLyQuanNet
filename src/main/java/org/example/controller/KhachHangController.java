@@ -63,9 +63,16 @@ public class KhachHangController {
     public String listKhachHang(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size,
+            @RequestParam(name = "keyword", required = false) String keyword,
             Model model) {
 
-        Page<KhachHang> khPage = khachHangService.findAll(PageRequest.of(page - 1, size));
+        Page<KhachHang> khPage;
+        if (keyword != null && !keyword.isEmpty()) {
+            khPage = khachHangService.search(keyword, PageRequest.of(page - 1, size));
+            model.addAttribute("keyword", keyword);
+        } else {
+            khPage = khachHangService.findAll(PageRequest.of(page - 1, size));
+        }
         model.addAttribute("khachhangPage", khPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", khPage.getTotalPages());

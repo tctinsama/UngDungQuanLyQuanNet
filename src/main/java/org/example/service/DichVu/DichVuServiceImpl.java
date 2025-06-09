@@ -51,4 +51,9 @@ public class DichVuServiceImpl implements DichVuService {
         return repo.findAll(pageable);
     }
 
+    @Override
+    public Page<DichVu> search(String keyword, Pageable pageable) {
+        return repo.findByMaDVContainingOrTenDVContaining(keyword, keyword, pageable);
+    }
+
 }

@@ -15,5 +15,6 @@ public interface MayService {
     May update(String id, May may);
     void deleteById(String id);
     Page<May> findAll(Pageable pageable);
+    Page<May> searchByMaMay(String keyword, Pageable pageable);
 
 }

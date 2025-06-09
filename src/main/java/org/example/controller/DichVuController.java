@@ -63,9 +63,16 @@ public class DichVuController {
     public String listDichVu(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size,
+            @RequestParam(name = "keyword", required = false) String keyword,
             Model model) {
 
-        Page<DichVu> dvPage = dichVuService.findAll(PageRequest.of(page - 1, size));
+        Page<DichVu> dvPage;
+        if (keyword != null && !keyword.isEmpty()) {
+            dvPage = dichVuService.search(keyword, PageRequest.of(page - 1, size));
+            model.addAttribute("keyword", keyword);
+        } else {
+            dvPage = dichVuService.findAll(PageRequest.of(page - 1, size));
+        }
         model.addAttribute("dichvuPage", dvPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", dvPage.getTotalPages());

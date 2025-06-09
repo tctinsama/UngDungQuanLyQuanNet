@@ -62,9 +62,16 @@ public class MayController {
     public String listMay(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size,
+            @RequestParam(name = "keyword", required = false) String keyword,
             Model model) {
 
-        Page<May> mayPage = mayService.findAll(PageRequest.of(page - 1, size));
+        Page<May> mayPage;
+        if (keyword != null && !keyword.isEmpty()) {
+            mayPage = mayService.searchByMaMay(keyword, PageRequest.of(page - 1, size));
+            model.addAttribute("keyword", keyword);
+        } else {
+            mayPage = mayService.findAll(PageRequest.of(page - 1, size));
+        }
         model.addAttribute("khachhangPage", mayPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", mayPage.getTotalPages());

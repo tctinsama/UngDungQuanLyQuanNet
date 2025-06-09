@@ -16,4 +16,6 @@ public interface DichVuService {
     void deleteById(String id);
 
     Page<DichVu> findAll(Pageable pageable);
+
+    Page<DichVu> search(String keyword, Pageable pageable);
 }
